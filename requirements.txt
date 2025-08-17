@@ -1,5 +1,6 @@
 sentence-transformers ===2.2.2
 langchain
+langchain-community
 flask
 pypdf
 python-dotenv
