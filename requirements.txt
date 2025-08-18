@@ -1,12 +1,14 @@
-sentence-transformers ===2.2.2
+flask
+python-dotenv
+pypdf
+pinecone[grpc]
 langchain
 langchain-community
-flask
-pypdf
-python-dotenv
-pinecone[grpc]
-langchain-pinecone
-langchain-community
 langchain-openai
+langchain-pinecone
 langchain-experimental
--e .
+sentence-transformers==2.2.2
+setuptools
+mypy
+jupyter
+notebook

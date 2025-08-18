@@ -18,11 +18,14 @@ function updateScrollbar() {
 }
 
 function setDate() {
-    d = new Date()
-    if (m != d.getMinutes()) {
-        m = d.getMinutes();
-        $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
-    }
+    d = new Date();
+    let hours = d.getHours();
+    let minutes = d.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    let timeString = hours + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + ampm;
+    $('<div class="timestamp">' + timeString + '</div>').appendTo($('.message:last'));
 }
 
 function insertMessage() {
@@ -64,12 +67,12 @@ function insertMessage() {
 }
 
 function showLoading() {
-    $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+    $('<div class="message loading new"><figure class="avatar"><img src="/static/doctor-icon.png" /></figure><span></span></div>').appendTo($('.mCSB_container'));
     updateScrollbar();
 }
 
 function showBotMessage(message) {
-    $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + message + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('<div class="message new"><figure class="avatar"><img src="/static/doctor-icon.png" /></figure>' + message + '</div>').appendTo($('.mCSB_container')).addClass('new');
     setDate();
     updateScrollbar();
 }
